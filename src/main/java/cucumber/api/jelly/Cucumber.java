@@ -283,7 +283,13 @@ public class Cucumber extends ParentRunner<Runner> {
          * @since 1.58
          */
         Level failOnException() default Level.OFF;
-                
+
+        /**
+         * Whether splash screen is to be shown.
+         *
+         * @return true or false
+         */
+        boolean splash() default false;
     }                
  
     static class JellyOptions {
@@ -526,6 +532,10 @@ public class Cucumber extends ParentRunner<Runner> {
             return jellyOptions.gui();
         }
 
+        public boolean splash() {
+            return jellyOptions.splash();
+        }
+
         public List<String> startupArgs(){
             //TODO: Need to get this as a list
             return new ArrayList<String>();        
@@ -694,7 +704,9 @@ public class Cucumber extends ParentRunner<Runner> {
             preparePatches(System.getProperty("java.class.path"), System.getProperties(), allClasses.toArray(new Class<?>[0]));
 
             List<String> args = new ArrayList<String>();
-            args.add("--nosplash");
+            if (!config.splash()) {
+                args.add("--nosplash");
+            }
             if (!config.gui()) {
                 args.add("--nogui");
             }
