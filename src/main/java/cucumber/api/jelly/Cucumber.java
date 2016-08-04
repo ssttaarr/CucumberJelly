@@ -520,8 +520,7 @@ public class Cucumber extends ParentRunner<Runner> {
         }
 
         public List<String> clusterRegExp(){
-            //TODO: Need to get this as a list
-            return new ArrayList<String>();
+            return Arrays.asList(jellyOptions.clusterRegExps());
         }
 
         public boolean hideExtraModules(){
