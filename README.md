@@ -28,4 +28,8 @@ it can be included as a dependency (should have testing scope!!) as follows
 .
 .
 ```
+To skip GPG signing you need to set system property `gpg.sign` to `false`, i,e,
 
+---
+mvn -Dgpg.skip=true clean install
+---
